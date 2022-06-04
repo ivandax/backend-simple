@@ -6,7 +6,7 @@ from urllib.request import urlopen
 
 AUTH0_DOMAIN = 'dev-ietovh3f.us.auth0.com'
 ALGORITHMS = ['RS256']
-API_AUDIENCE = 'coffeeshop'
+API_AUDIENCE = 'simpletask'
 
 class AuthError(Exception):
     def __init__(self, error, status_code):

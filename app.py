@@ -61,6 +61,59 @@ def add_project(jwt):
         abort(422)
 
 #----------------------------------------------------------------------------#
+# Error handlers
+#----------------------------------------------------------------------------#
+
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({
+        "success": False,
+        "error": 404,
+        "message": "resource not found"
+    }), 404
+
+@app.errorhandler(422)
+def unprocessable(error):
+    return jsonify({
+        "success": False,
+        "code": 422,
+        "message": "resource not processable"
+    }), 422
+
+@app.errorhandler(401)
+def access_denied(error):
+    return jsonify({
+        "success": False,
+        "error": 401,
+        "message": "access denied"
+    }), 401
+
+@app.errorhandler(403)
+def forbidden(error):
+    return jsonify({
+        "success": False,
+        "error": 403,
+        "message": "forbidden"
+    }), 403
+
+@app.errorhandler(400)
+def bad_request(error):
+    return jsonify({
+        "success": False,
+        "error": 400,
+        "message": "bad request"
+    }), 400
+
+
+
+@app.errorhandler(AuthError)
+def process_AuthError(error):
+    response = jsonify(error.error)
+    response.status_code = error.status_code
+
+    return response
+
+#----------------------------------------------------------------------------#
 # Launch.
 #----------------------------------------------------------------------------#
 
