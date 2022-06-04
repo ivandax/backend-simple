@@ -22,7 +22,8 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 from database.models import Organization, Profile
-from .auth.auth import AuthError, requires_auth
+from auth.auth import AuthError, requires_auth
+
 
 #----------------------------------------------------------------------------#
 # Endpoints

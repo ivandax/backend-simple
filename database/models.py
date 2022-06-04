@@ -80,3 +80,38 @@ class Profile(db.Model):
             "organization_id": self.organization_id,
             "language": self.language,
         }
+
+class Project(db.Model):
+    __tablename__ = 'projects'
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True, nullable=False)
+    created = Column(DateTime, default=datetime.datetime.utcnow)
+    updated = Column(DateTime, default=datetime.datetime.utcnow)
+    status = Column(String, nullable=False)
+    created_by = Column(String, nullable=False)
+
+    def __init__(self, name, status, created_by ):
+        self.name = name
+        self.status = status
+        self.created_by = created_by
+    
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def format(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "created": self.created,
+            "updated": self.updated,
+            "status": self.status,
+            "created_by": self.created_by
+        }
