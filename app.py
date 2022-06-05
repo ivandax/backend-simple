@@ -40,14 +40,15 @@ def test():
 @app.route("/projects", methods=["POST"])
 @requires_auth("post:projects")
 def add_project(jwt):
+    print(jwt)
     body = request.get_json()
+    userId = jwt["sub"]
     if body:
         name = body.get("name", None)
         status = body.get("status", None)
-        created_by = body.get("created_by", None)
-        if name != None and status != None and created_by != None:
+        if name != None and status != None:
             try:
-                project = Project(name=name, status=status, created_by=created_by)
+                project = Project(name=name, status=status, created_by=userId)
                 project.insert()
                 return jsonify({
                     "success": True,

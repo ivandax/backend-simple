@@ -38,6 +38,14 @@ def check_permissions(permission, payload):
         }, 403)
     return True
 
+def check_user(payload):
+    if 'sub' not in payload:
+        raise AuthError({
+            'code': 'missing_user_id',
+            'description': 'sub key not in payload'
+        }, 403)
+    return True
+
 def verify_decode_jwt(token):
     jsonurl = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')
     jwks = json.loads(jsonurl.read())
@@ -98,6 +106,7 @@ def requires_auth(permission=''):
             token = get_token_auth_header()
             payload = verify_decode_jwt(token)
             check_permissions(permission, payload)
+            check_user(payload)
             return f(payload, *args, **kwargs)
 
         return wrapper
