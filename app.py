@@ -37,10 +37,21 @@ def test():
         }
     )
 
+@app.route("/projects", methods=["GET"])
+@requires_auth("get:projects")
+def get_projects(jwt):
+    projects = Project.query.order_by(Project.id).all()
+    formatted = [project.format() for project in projects]
+    return jsonify({
+        "success": True,
+        "items": formatted,
+         })
+
+
+
 @app.route("/projects", methods=["POST"])
 @requires_auth("post:projects")
 def add_project(jwt):
-    print(jwt)
     body = request.get_json()
     userId = jwt["sub"]
     if body:
