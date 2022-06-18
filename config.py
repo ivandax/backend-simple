@@ -9,5 +9,5 @@ DEBUG = True
 # Connect to the database
 
 # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres@localhost:5432/simpletask_dev'
-SQLALCHEMY_DATABASE_URI =  os.environ['DATABASE_URL']
+SQLALCHEMY_DATABASE_URI =  os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 SQLALCHEMY_TRACK_MODIFICATIONS = False
