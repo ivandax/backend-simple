@@ -21,7 +21,7 @@ db = SQLAlchemy(app)
 # Add migration config
 migrate = Migrate(app, db)
 
-from database.models import Project, Task
+from models import Project, Task
 from auth.auth import AuthError, requires_auth
 
 

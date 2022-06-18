@@ -4,7 +4,7 @@ import json
 from flask_sqlalchemy import SQLAlchemy
 
 from app import app, db
-from database.models import Project, Task
+from models import Project, Task
 
 class TriviaTestCase(unittest.TestCase):
     def setUp(self):
