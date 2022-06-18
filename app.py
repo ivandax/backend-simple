@@ -29,11 +29,11 @@ from auth.auth import AuthError, requires_auth
 # Endpoints
 #----------------------------------------------------------------------------#
 
-@app.route("/test", methods=["GET"])
+@app.route("/", methods=["GET"])
 def test():       
     return jsonify({
             "success": True,
-            "action": "test"
+            "action": "This is running!"
         }
     )
 
