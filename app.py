@@ -98,6 +98,16 @@ def update_project(jwt, project_id):
         print(sys.exc_info())
         abort(400)
 
+@app.route("/tasks", methods=["GET"])
+@requires_auth("get:tasks")
+def get_tasks(jwt):
+    tasks = Task.query.order_by(Task.id).all()
+    formatted = [task.format() for task in tasks]
+    return jsonify({
+        "success": True,
+        "items": formatted,
+         })
+
 @app.route("/tasks", methods=["POST"])
 @requires_auth("post:tasks")
 def add_task(jwt):
@@ -128,6 +138,47 @@ def add_task(jwt):
             abort(422)
     else:
         abort(422)
+
+@app.route("/tasks/<int:task_id>", methods=["PATCH"])
+@requires_auth("update:tasks")
+def update_task(jwt, task_id):
+    task = Task.query.filter(Task.id == task_id).one_or_none()
+
+    if task is None:
+        abort(404)
+
+    body = request.get_json()
+    title = body.get("title", None)
+    description = body.get("description", None)
+
+    if title is not None:
+        task.title = title
+    if description is not None:
+        task.description = description
+
+    try:
+        task.update()
+        return jsonify({
+            "success": True,
+        })
+    except:
+        print(sys.exc_info())
+        abort(400)
+
+@app.route("/tasks/<int:task_id>", methods=["DELETE"])
+@requires_auth("delete:tasks")
+def delete_task(jwt, task_id):
+    task = Task.query.filter(Task.id == task_id).one_or_none()
+
+    if task is None:
+        abort(404)
+
+    task.delete()
+        
+    return jsonify({
+            "success": True,
+        }
+    )
 
 #----------------------------------------------------------------------------#
 # Error handlers
