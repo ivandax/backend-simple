@@ -1,0 +1,625 @@
+{
+	"info": {
+		"_postman_id": "48d82386-6f9a-4c17-a45e-d330acda788c",
+		"name": "TaskManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9339130"
+	},
+	"item": [
+		{
+			"name": "Auth0",
+			"item": [
+				{
+					"name": "Create a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"client_id\": \"0fMEJItD6QHXUnW1yOwyZXR72EwO3FTi\",\r\n  \"email\": \"mikemeyers546@gmail.com\",\r\n  \"password\": \"Test12341234\",\r\n  \"connection\": \"simpletask\",\r\n  \"name\": \"John Doe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dev-ietovh3f.us.auth0.com/dbconnections/signup",
+							"protocol": "https",
+							"host": [
+								"dev-ietovh3f",
+								"us",
+								"auth0",
+								"com"
+							],
+							"path": [
+								"dbconnections",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dev-ietovh3f.us.auth0.com/authorize?audience=simpletask&response_type=token&client_id=0fMEJItD6QHXUnW1yOwyZXR72EwO3FTi&redirect_uri=http://localhost:3000",
+							"protocol": "https",
+							"host": [
+								"dev-ietovh3f",
+								"us",
+								"auth0",
+								"com"
+							],
+							"path": [
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "audience",
+									"value": "simpletask"
+								},
+								{
+									"key": "response_type",
+									"value": "token"
+								},
+								{
+									"key": "client_id",
+									"value": "0fMEJItD6QHXUnW1yOwyZXR72EwO3FTi"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:3000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API Endpoints - Local",
+			"item": [
+				{
+					"name": "Create Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJhZGEyMDdmMzNmNmQ5NzQ2MDZmMjkyIiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU2MDQ2NywiZXhwIjoxNjU1NTY3NjY3LCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.Q5LvIEM6_e9WlCpbIK3Q-9gqjW5t7RzM2fyJCDnaBpMwksDzNj_yWWSCdfcM6j1bT9otCNP5Jd3ojR6vBXMd9IlLMFe8BvDMH-ef6y8WGd-Cz4uogPXBjKn3FvHnAkota_YwNYZo-V8OF8tJlfhw7oN9leLdzWLcVwGbDxO0iBMOXqZgFUg0lLsjnmgL5mnFZmMqYiqQkHIUB_BqpJg-ZYQnQc8Giq-zLSmIQM6rln5_3n5Czmk97EVGojXXTcbJoIVDF3WhLhNP4Ig5rNJSkCtC29tGRF_dPg5N9yOXVUdppxgHU9bvSiH1kKDfXWZquhRjt48OwXChfcgRrMkIDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mrm maysand\",\r\n    \"status\": \"active\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/projects",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjI4NTUzZmJiNjljMGQwMDY4NDI4ODg4IiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU0MDMzMywiZXhwIjoxNjU1NTQ3NTMzLCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.mWffU8ABaJSTC9W5r55pa-m_9-IeiCiJ84W0rEyol53DqLNQWtbNKpwXfza7vqEXOGkRjbHW5_XiKB5gN9Hf63sCWsiJro3T7UHvku1LlsDeHSnAJ_KeA8ozfa0hMMcek3sQkigeatqKcX26ra6XGyvE5d1NTWbxxeNWdNgUJ3qIwca3aafcaubUOZ3cXIrC_dJesdO3xUuAr4VOzKKrciNj3zn33aVNESvZi_Uw-f0TvTPgjEhqDnavhpmGhZKUmnPGTg5uuzeBa9Vlaah8GAEubp8Y7sHe2Y-PouuxAwmb-4ca4DOpa9iiOjSHmKBATteLXlX4X-mB3bibgV8sAw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Try some stuffc 2244\",\r\n    \"description\": \"The after make like lik 22\",\r\n    \"project_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/tasks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjI4NTUzZmJiNjljMGQwMDY4NDI4ODg4IiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU0MDMzMywiZXhwIjoxNjU1NTQ3NTMzLCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.mWffU8ABaJSTC9W5r55pa-m_9-IeiCiJ84W0rEyol53DqLNQWtbNKpwXfza7vqEXOGkRjbHW5_XiKB5gN9Hf63sCWsiJro3T7UHvku1LlsDeHSnAJ_KeA8ozfa0hMMcek3sQkigeatqKcX26ra6XGyvE5d1NTWbxxeNWdNgUJ3qIwca3aafcaubUOZ3cXIrC_dJesdO3xUuAr4VOzKKrciNj3zn33aVNESvZi_Uw-f0TvTPgjEhqDnavhpmGhZKUmnPGTg5uuzeBa9Vlaah8GAEubp8Y7sHe2Y-PouuxAwmb-4ca4DOpa9iiOjSHmKBATteLXlX4X-mB3bibgV8sAw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Pizza Project\",\r\n    \"status\": \"inactive\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/projects/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjI4NTUzZmJiNjljMGQwMDY4NDI4ODg4IiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU0MDMzMywiZXhwIjoxNjU1NTQ3NTMzLCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.mWffU8ABaJSTC9W5r55pa-m_9-IeiCiJ84W0rEyol53DqLNQWtbNKpwXfza7vqEXOGkRjbHW5_XiKB5gN9Hf63sCWsiJro3T7UHvku1LlsDeHSnAJ_KeA8ozfa0hMMcek3sQkigeatqKcX26ra6XGyvE5d1NTWbxxeNWdNgUJ3qIwca3aafcaubUOZ3cXIrC_dJesdO3xUuAr4VOzKKrciNj3zn33aVNESvZi_Uw-f0TvTPgjEhqDnavhpmGhZKUmnPGTg5uuzeBa9Vlaah8GAEubp8Y7sHe2Y-PouuxAwmb-4ca4DOpa9iiOjSHmKBATteLXlX4X-mB3bibgV8sAw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"MrMachine\",\r\n    \"description\": \"This is my desc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/tasks/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"tasks",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjI4NTUzZmJiNjljMGQwMDY4NDI4ODg4IiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU0MDMzMywiZXhwIjoxNjU1NTQ3NTMzLCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.mWffU8ABaJSTC9W5r55pa-m_9-IeiCiJ84W0rEyol53DqLNQWtbNKpwXfza7vqEXOGkRjbHW5_XiKB5gN9Hf63sCWsiJro3T7UHvku1LlsDeHSnAJ_KeA8ozfa0hMMcek3sQkigeatqKcX26ra6XGyvE5d1NTWbxxeNWdNgUJ3qIwca3aafcaubUOZ3cXIrC_dJesdO3xUuAr4VOzKKrciNj3zn33aVNESvZi_Uw-f0TvTPgjEhqDnavhpmGhZKUmnPGTg5uuzeBa9Vlaah8GAEubp8Y7sHe2Y-PouuxAwmb-4ca4DOpa9iiOjSHmKBATteLXlX4X-mB3bibgV8sAw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/tasks/7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"tasks",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Projects",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJhZGEyMDdmMzNmNmQ5NzQ2MDZmMjkyIiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU2MDQ2NywiZXhwIjoxNjU1NTY3NjY3LCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.Q5LvIEM6_e9WlCpbIK3Q-9gqjW5t7RzM2fyJCDnaBpMwksDzNj_yWWSCdfcM6j1bT9otCNP5Jd3ojR6vBXMd9IlLMFe8BvDMH-ef6y8WGd-Cz4uogPXBjKn3FvHnAkota_YwNYZo-V8OF8tJlfhw7oN9leLdzWLcVwGbDxO0iBMOXqZgFUg0lLsjnmgL5mnFZmMqYiqQkHIUB_BqpJg-ZYQnQc8Giq-zLSmIQM6rln5_3n5Czmk97EVGojXXTcbJoIVDF3WhLhNP4Ig5rNJSkCtC29tGRF_dPg5N9yOXVUdppxgHU9bvSiH1kKDfXWZquhRjt48OwXChfcgRrMkIDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/projects",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjI4NTUzZmJiNjljMGQwMDY4NDI4ODg4IiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU0MDMzMywiZXhwIjoxNjU1NTQ3NTMzLCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.mWffU8ABaJSTC9W5r55pa-m_9-IeiCiJ84W0rEyol53DqLNQWtbNKpwXfza7vqEXOGkRjbHW5_XiKB5gN9Hf63sCWsiJro3T7UHvku1LlsDeHSnAJ_KeA8ozfa0hMMcek3sQkigeatqKcX26ra6XGyvE5d1NTWbxxeNWdNgUJ3qIwca3aafcaubUOZ3cXIrC_dJesdO3xUuAr4VOzKKrciNj3zn33aVNESvZi_Uw-f0TvTPgjEhqDnavhpmGhZKUmnPGTg5uuzeBa9Vlaah8GAEubp8Y7sHe2Y-PouuxAwmb-4ca4DOpa9iiOjSHmKBATteLXlX4X-mB3bibgV8sAw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/tasks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API Endpoints - Heroku",
+			"item": [
+				{
+					"name": "Create Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJhZGEyMDdmMzNmNmQ5NzQ2MDZmMjkyIiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU2MDQ2NywiZXhwIjoxNjU1NTY3NjY3LCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.Q5LvIEM6_e9WlCpbIK3Q-9gqjW5t7RzM2fyJCDnaBpMwksDzNj_yWWSCdfcM6j1bT9otCNP5Jd3ojR6vBXMd9IlLMFe8BvDMH-ef6y8WGd-Cz4uogPXBjKn3FvHnAkota_YwNYZo-V8OF8tJlfhw7oN9leLdzWLcVwGbDxO0iBMOXqZgFUg0lLsjnmgL5mnFZmMqYiqQkHIUB_BqpJg-ZYQnQc8Giq-zLSmIQM6rln5_3n5Czmk97EVGojXXTcbJoIVDF3WhLhNP4Ig5rNJSkCtC29tGRF_dPg5N9yOXVUdppxgHU9bvSiH1kKDfXWZquhRjt48OwXChfcgRrMkIDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"I love pizze\",\r\n    \"status\": \"active\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://backend-simple.herokuapp.com/projects",
+							"protocol": "https",
+							"host": [
+								"backend-simple",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJhZGEyMDdmMzNmNmQ5NzQ2MDZmMjkyIiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU2MDQ2NywiZXhwIjoxNjU1NTY3NjY3LCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.Q5LvIEM6_e9WlCpbIK3Q-9gqjW5t7RzM2fyJCDnaBpMwksDzNj_yWWSCdfcM6j1bT9otCNP5Jd3ojR6vBXMd9IlLMFe8BvDMH-ef6y8WGd-Cz4uogPXBjKn3FvHnAkota_YwNYZo-V8OF8tJlfhw7oN9leLdzWLcVwGbDxO0iBMOXqZgFUg0lLsjnmgL5mnFZmMqYiqQkHIUB_BqpJg-ZYQnQc8Giq-zLSmIQM6rln5_3n5Czmk97EVGojXXTcbJoIVDF3WhLhNP4Ig5rNJSkCtC29tGRF_dPg5N9yOXVUdppxgHU9bvSiH1kKDfXWZquhRjt48OwXChfcgRrMkIDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Try some stuffc 2244\",\r\n    \"description\": \"The after make like lik 22\",\r\n    \"project_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://backend-simple.herokuapp.com/tasks",
+							"protocol": "https",
+							"host": [
+								"backend-simple",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJhZGEyMDdmMzNmNmQ5NzQ2MDZmMjkyIiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU2MDQ2NywiZXhwIjoxNjU1NTY3NjY3LCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.Q5LvIEM6_e9WlCpbIK3Q-9gqjW5t7RzM2fyJCDnaBpMwksDzNj_yWWSCdfcM6j1bT9otCNP5Jd3ojR6vBXMd9IlLMFe8BvDMH-ef6y8WGd-Cz4uogPXBjKn3FvHnAkota_YwNYZo-V8OF8tJlfhw7oN9leLdzWLcVwGbDxO0iBMOXqZgFUg0lLsjnmgL5mnFZmMqYiqQkHIUB_BqpJg-ZYQnQc8Giq-zLSmIQM6rln5_3n5Czmk97EVGojXXTcbJoIVDF3WhLhNP4Ig5rNJSkCtC29tGRF_dPg5N9yOXVUdppxgHU9bvSiH1kKDfXWZquhRjt48OwXChfcgRrMkIDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Pizza Project\",\r\n    \"status\": \"inactive\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://backend-simple.herokuapp.com/projects/1",
+							"protocol": "https",
+							"host": [
+								"backend-simple",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJhZGEyMDdmMzNmNmQ5NzQ2MDZmMjkyIiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU2MDQ2NywiZXhwIjoxNjU1NTY3NjY3LCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.Q5LvIEM6_e9WlCpbIK3Q-9gqjW5t7RzM2fyJCDnaBpMwksDzNj_yWWSCdfcM6j1bT9otCNP5Jd3ojR6vBXMd9IlLMFe8BvDMH-ef6y8WGd-Cz4uogPXBjKn3FvHnAkota_YwNYZo-V8OF8tJlfhw7oN9leLdzWLcVwGbDxO0iBMOXqZgFUg0lLsjnmgL5mnFZmMqYiqQkHIUB_BqpJg-ZYQnQc8Giq-zLSmIQM6rln5_3n5Czmk97EVGojXXTcbJoIVDF3WhLhNP4Ig5rNJSkCtC29tGRF_dPg5N9yOXVUdppxgHU9bvSiH1kKDfXWZquhRjt48OwXChfcgRrMkIDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"MrMachine\",\r\n    \"description\": \"This is my desc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://backend-simple.herokuapp.com/tasks/2",
+							"protocol": "https",
+							"host": [
+								"backend-simple",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tasks",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJhZGEyMDdmMzNmNmQ5NzQ2MDZmMjkyIiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU2MDQ2NywiZXhwIjoxNjU1NTY3NjY3LCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.Q5LvIEM6_e9WlCpbIK3Q-9gqjW5t7RzM2fyJCDnaBpMwksDzNj_yWWSCdfcM6j1bT9otCNP5Jd3ojR6vBXMd9IlLMFe8BvDMH-ef6y8WGd-Cz4uogPXBjKn3FvHnAkota_YwNYZo-V8OF8tJlfhw7oN9leLdzWLcVwGbDxO0iBMOXqZgFUg0lLsjnmgL5mnFZmMqYiqQkHIUB_BqpJg-ZYQnQc8Giq-zLSmIQM6rln5_3n5Czmk97EVGojXXTcbJoIVDF3WhLhNP4Ig5rNJSkCtC29tGRF_dPg5N9yOXVUdppxgHU9bvSiH1kKDfXWZquhRjt48OwXChfcgRrMkIDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://backend-simple.herokuapp.com/tasks/7",
+							"protocol": "https",
+							"host": [
+								"backend-simple",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tasks",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Projects",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJhZGEyMDdmMzNmNmQ5NzQ2MDZmMjkyIiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU2MDQ2NywiZXhwIjoxNjU1NTY3NjY3LCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.Q5LvIEM6_e9WlCpbIK3Q-9gqjW5t7RzM2fyJCDnaBpMwksDzNj_yWWSCdfcM6j1bT9otCNP5Jd3ojR6vBXMd9IlLMFe8BvDMH-ef6y8WGd-Cz4uogPXBjKn3FvHnAkota_YwNYZo-V8OF8tJlfhw7oN9leLdzWLcVwGbDxO0iBMOXqZgFUg0lLsjnmgL5mnFZmMqYiqQkHIUB_BqpJg-ZYQnQc8Giq-zLSmIQM6rln5_3n5Czmk97EVGojXXTcbJoIVDF3WhLhNP4Ig5rNJSkCtC29tGRF_dPg5N9yOXVUdppxgHU9bvSiH1kKDfXWZquhRjt48OwXChfcgRrMkIDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend-simple.herokuapp.com/projects",
+							"protocol": "https",
+							"host": [
+								"backend-simple",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ilc3QkVMUUZIVHE1ODdseS1LemxIXyJ9.eyJpc3MiOiJodHRwczovL2Rldi1pZXRvdmgzZi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJhZGEyMDdmMzNmNmQ5NzQ2MDZmMjkyIiwiYXVkIjoic2ltcGxldGFzayIsImlhdCI6MTY1NTU2MDQ2NywiZXhwIjoxNjU1NTY3NjY3LCJhenAiOiIwZk1FSkl0RDZRSFhVblcxeU93eVpYUjcyRXdPM0ZUaSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnRhc2tzIiwiZ2V0OnByb2plY3RzIiwiZ2V0OnRhc2tzIiwicG9zdDpwcm9qZWN0cyIsInBvc3Q6dGFza3MiLCJ1cGRhdGU6cHJvamVjdHMiLCJ1cGRhdGU6dGFza3MiXX0.Q5LvIEM6_e9WlCpbIK3Q-9gqjW5t7RzM2fyJCDnaBpMwksDzNj_yWWSCdfcM6j1bT9otCNP5Jd3ojR6vBXMd9IlLMFe8BvDMH-ef6y8WGd-Cz4uogPXBjKn3FvHnAkota_YwNYZo-V8OF8tJlfhw7oN9leLdzWLcVwGbDxO0iBMOXqZgFUg0lLsjnmgL5mnFZmMqYiqQkHIUB_BqpJg-ZYQnQc8Giq-zLSmIQM6rln5_3n5Czmk97EVGojXXTcbJoIVDF3WhLhNP4Ig5rNJSkCtC29tGRF_dPg5N9yOXVUdppxgHU9bvSiH1kKDfXWZquhRjt48OwXChfcgRrMkIDg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend-simple.herokuapp.com/tasks",
+							"protocol": "https",
+							"host": [
+								"backend-simple",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
