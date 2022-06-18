@@ -1,6 +1,6 @@
 
 # Final Project for Udacity Fullstack Course
-# Simple Task
+## Simple Task
 
 This is a task manager app that allows an authenticated user to:
 
@@ -9,7 +9,7 @@ This is a task manager app that allows an authenticated user to:
 
 This project could be extended to add more functionalities to help businesses track their projects and tasks.
 
-# Starting in development mode:
+## Starting in development mode:
 
 Install the dependencies.
 It uses Postgres locally.
@@ -20,7 +20,7 @@ Run:
 `export FLASK_ENV=development`
 `flask run`
 
-# Existing Auth0 users
+## Existing Auth0 users
 
 There are 2 roles in this app:
 
@@ -34,7 +34,7 @@ Two accounts exist already in Auth0 to support this:
 
 You need to contact me to get the passwords.
 
-# Getting Auth0 Credentials for test
+## Getting Auth0 Credentials for test
 
 There is a frontend that can be run locally to obtain a token from the Auth0 App. Another option is to user your browser to go to:
 
@@ -42,7 +42,7 @@ There is a frontend that can be run locally to obtain a token from the Auth0 App
 
 This will allow you to log in and get a token.
 
-# Testing Endpoints in Postman
+## Testing Endpoints in Postman
 
 All endpoints need a JWT to work. All of them are protected so you need to get a token with the link above and one of the 2 accounts.
 
@@ -51,4 +51,10 @@ After that, you can download the Postman collection in file `TaskManager.postman
 Here you can replace the tokens in the Authorization section to test them.
 
 There are options for local and Heroku.
+
+## Heroku link:
+
+`https://backend-simple.herokuapp.com/`
+
+
 
