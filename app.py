@@ -72,6 +72,31 @@ def add_project(jwt):
     else:
         abort(422)
 
+@app.route("/projects/<int:project_id>", methods=["PATCH"])
+@requires_auth("update:projects")
+def update_project(jwt, project_id):
+    project = Project.query.filter(Project.id == project_id).one_or_none()
+
+    if project is None:
+        abort(404)
+
+    body = request.get_json()
+    name = body.get("name", None)
+    status = body.get("status", None)
+
+    if name is not None:
+        project.name = name
+    if status is not None:
+        project.status = status
+
+    try:
+        project.update()
+        return jsonify({
+            "success": True,
+        })
+    except:
+        abort(400)
+
 #----------------------------------------------------------------------------#
 # Error handlers
 #----------------------------------------------------------------------------#
