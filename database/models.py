@@ -56,10 +56,11 @@ class Task(db.Model):
     created_by = Column(String, nullable=False)
     project_id = Column(Integer, ForeignKey('projects.id'), nullable=False)
 
-    def __init__(self, title, description, created_by ):
+    def __init__(self, title, description, created_by, project_id ):
         self.title = title
         self.description = description
         self.created_by = created_by
+        self.project_id = project_id
     
     def insert(self):
         db.session.add(self)

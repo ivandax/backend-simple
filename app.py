@@ -21,7 +21,7 @@ db = SQLAlchemy(app)
 # Add migration config
 migrate = Migrate(app, db)
 
-from database.models import Organization, Profile, Project
+from database.models import Project, Task
 from auth.auth import AuthError, requires_auth
 
 
@@ -95,7 +95,39 @@ def update_project(jwt, project_id):
             "success": True,
         })
     except:
+        print(sys.exc_info())
         abort(400)
+
+@app.route("/tasks", methods=["POST"])
+@requires_auth("post:tasks")
+def add_task(jwt):
+    body = request.get_json()
+    userId = jwt["sub"]
+    if body:
+        title = body.get("title", None)
+        description = body.get("description", None)
+        project_id = body.get("project_id", None)
+
+        if project_id is None:
+            abort(400)
+
+        if title != None and description != None:
+            try:
+                project = Project.query.get(project_id)
+                if project is None:
+                     abort(404)
+                task = Task(title=title, description=description, created_by=userId, project_id=project_id)
+                task.insert()
+                return jsonify({
+                    "success": True,
+                })
+            except:
+                print(sys.exc_info())
+                abort(400)
+        else:
+            abort(422)
+    else:
+        abort(422)
 
 #----------------------------------------------------------------------------#
 # Error handlers
