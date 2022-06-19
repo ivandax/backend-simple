@@ -3,10 +3,26 @@ from flask import request, _request_ctx_stack, abort
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
+import os
 
-AUTH0_DOMAIN = 'dev-ietovh3f.us.auth0.com'
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'simpletask'
+if os.environ.get('AUTH0_DOMAIN') is None:
+    AUTH0_DOMAIN = 'dev-ietovh3f.us.auth0.com'
+else:
+    AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
+
+if os.environ.get('ALGORITHMS') is None:
+    ALGORITHMS = ['RS256']
+else:
+    ALGORITHMS = os.environ.get('ALGORITHMS')
+
+if os.environ.get('API_AUDIENCE') is None:
+    API_AUDIENCE = 'simpletask'
+else:
+    API_AUDIENCE = os.environ.get('API_AUDIENCE')
+
+# AUTH0_DOMAIN = 'dev-ietovh3f.us.auth0.com'
+# ALGORITHMS = ['RS256']
+# API_AUDIENCE = 'simpletask'
 
 class AuthError(Exception):
     def __init__(self, error, status_code):
